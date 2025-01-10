@@ -47,7 +47,7 @@ After migration:
 1. Test migrations and seeding with `npx supabase db reset`
 2. Update the TypeScript types from Supabase/Postgres tables with `npm run gentypes`
 
-## Code style guide
+### Code style guide
 
 - Aim for 1) readability, then 2) minimalism/DRY:ness: _“Code is read more than it is written”_.
 - Create functions that take an _object as argument_ instead of multiple arguments where possible. Prefer `function foo({ arg1, arg2 })` over `function foo(arg1, arg2)`.
