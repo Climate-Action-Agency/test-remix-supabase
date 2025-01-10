@@ -5,9 +5,8 @@
 [React](https://reactjs.org/),
 [Remix](https://remix.run/),
 [Supabase](https://supabase.com/),
-[TypeScript](https://www.typescriptlang.org/),
-[shadcn/ui](https://ui.shadcn.com/),
-[Tailwind](https://tailwindcss.com/)
+[shadcn/ui](https://ui.shadcn.com/) (= [Tailwind](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/)),
+[TypeScript](https://www.typescriptlang.org/)
 
 ## Setting up
 
