@@ -7,19 +7,16 @@ export interface Database {
         Row: {
           account_id: string;
           account_role: Database['basejump']['Enums']['account_role'];
-          created_at: string | null;
           user_id: string;
         };
         Insert: {
           account_id: string;
           account_role: Database['basejump']['Enums']['account_role'];
-          created_at?: string | null;
           user_id: string;
         };
         Update: {
           account_id?: string;
           account_role?: Database['basejump']['Enums']['account_role'];
-          created_at?: string | null;
           user_id?: string;
         };
         Relationships: [
@@ -34,79 +31,43 @@ export interface Database {
       };
       accounts: {
         Row: {
-          business_description: string | null;
-          category_id: number | null;
-          city: string | null;
-          country_code: string | null;
           created_at: string | null;
           created_by: string | null;
-          email_invoices: string | null;
-          emission_factor_id: number | null;
           id: string;
-          nace_category_id: number | null;
           name: string | null;
-          organization_number: string | null;
           personal_account: boolean;
-          postal_code: string | null;
           primary_owner_user_id: string;
           private_metadata: Json | null;
           public_metadata: Json | null;
           slug: string | null;
-          state: string | null;
-          street: string | null;
           updated_at: string | null;
           updated_by: string | null;
-          website_url: string | null;
         };
         Insert: {
-          business_description?: string | null;
-          category_id?: number | null;
-          city?: string | null;
-          country_code?: string | null;
           created_at?: string | null;
           created_by?: string | null;
-          email_invoices?: string | null;
-          emission_factor_id?: number | null;
           id?: string;
-          nace_category_id?: number | null;
           name?: string | null;
-          organization_number?: string | null;
           personal_account?: boolean;
-          postal_code?: string | null;
           primary_owner_user_id?: string;
           private_metadata?: Json | null;
           public_metadata?: Json | null;
           slug?: string | null;
-          state?: string | null;
-          street?: string | null;
           updated_at?: string | null;
           updated_by?: string | null;
-          website_url?: string | null;
         };
         Update: {
-          business_description?: string | null;
-          category_id?: number | null;
-          city?: string | null;
-          country_code?: string | null;
           created_at?: string | null;
           created_by?: string | null;
-          email_invoices?: string | null;
-          emission_factor_id?: number | null;
           id?: string;
-          nace_category_id?: number | null;
           name?: string | null;
-          organization_number?: string | null;
           personal_account?: boolean;
-          postal_code?: string | null;
           primary_owner_user_id?: string;
           private_metadata?: Json | null;
           public_metadata?: Json | null;
           slug?: string | null;
-          state?: string | null;
-          street?: string | null;
           updated_at?: string | null;
           updated_by?: string | null;
-          website_url?: string | null;
         };
         Relationships: [];
       };
@@ -321,7 +282,7 @@ export interface Database {
       };
     };
     Enums: {
-      account_role: 'owner' | 'member' | 'super_admin';
+      account_role: 'owner' | 'member';
       invitation_type: 'one_time' | '24_hour';
       subscription_status:
         | 'trialing'
@@ -402,20 +363,6 @@ export interface Database {
             foreignKeyName: 'account_category_category_id_fkey';
             columns: ['category_id'];
             isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'account_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'account_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
             referencedRelation: 'view_categories_overview';
             referencedColumns: ['child_category_id'];
           },
@@ -469,20 +416,6 @@ export interface Database {
             foreignKeyName: 'account_category_user_category_id_fkey';
             columns: ['category_id'];
             isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'account_category_user_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'account_category_user_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
             referencedRelation: 'view_categories_overview';
             referencedColumns: ['child_category_id'];
           },
@@ -501,262 +434,11 @@ export interface Database {
             referencedColumns: ['category_id'];
           },
         ];
-      };
-      accounting_category: {
-        Row: {
-          account_id: string | null;
-          category_id: number | null;
-          emission_factor_id: number | null;
-          external_accounting_category_id: string | null;
-          id: number;
-          include_emissions: number | null;
-          nace_category_id: number | null;
-          name: string | null;
-          parent_accounting_category_id: number | null;
-        };
-        Insert: {
-          account_id?: string | null;
-          category_id?: number | null;
-          emission_factor_id?: number | null;
-          external_accounting_category_id?: string | null;
-          id?: never;
-          include_emissions?: number | null;
-          nace_category_id?: number | null;
-          name?: string | null;
-          parent_accounting_category_id?: number | null;
-        };
-        Update: {
-          account_id?: string | null;
-          category_id?: number | null;
-          emission_factor_id?: number | null;
-          external_accounting_category_id?: string | null;
-          id?: never;
-          include_emissions?: number | null;
-          nace_category_id?: number | null;
-          name?: string | null;
-          parent_accounting_category_id?: number | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['child_category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['parent_category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_category_submissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'emission_factor';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_emission_factors';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_nace_category_id_fkey';
-            columns: ['nace_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'nace_category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_parent_accounting_category_id_fkey';
-            columns: ['parent_accounting_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'accounting_category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_parent_accounting_category_id_fkey';
-            columns: ['parent_accounting_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_accounting_categories';
-            referencedColumns: ['id'];
-          },
-        ];
-      };
-      activity: {
-        Row: {
-          account_id: string | null;
-          category_id: number | null;
-          country_id: number | null;
-          created_at: string;
-          customer_account_id: string | null;
-          day: number | null;
-          duration: number | null;
-          id: number;
-          metadata: Json | null;
-          month: number | null;
-          supplier_account_id: string | null;
-          year: number;
-        };
-        Insert: {
-          account_id?: string | null;
-          category_id?: number | null;
-          country_id?: number | null;
-          created_at?: string;
-          customer_account_id?: string | null;
-          day?: number | null;
-          duration?: number | null;
-          id?: number;
-          metadata?: Json | null;
-          month?: number | null;
-          supplier_account_id?: string | null;
-          year: number;
-        };
-        Update: {
-          account_id?: string | null;
-          category_id?: number | null;
-          country_id?: number | null;
-          created_at?: string;
-          customer_account_id?: string | null;
-          day?: number | null;
-          duration?: number | null;
-          id?: number;
-          metadata?: Json | null;
-          month?: number | null;
-          supplier_account_id?: string | null;
-          year?: number;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'activity_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'activity_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'activity_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'activity_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['child_category_id'];
-          },
-          {
-            foreignKeyName: 'activity_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['parent_category_id'];
-          },
-          {
-            foreignKeyName: 'activity_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_category_submissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'activity_country_id_fkey';
-            columns: ['country_id'];
-            isOneToOne: false;
-            referencedRelation: 'country';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'activity_country_id_fkey';
-            columns: ['country_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['country_id'];
-          },
-        ];
-      };
-      address: {
-        Row: {
-          city: string | null;
-          entrance: string;
-          id: number;
-          street: string;
-          street_number: number;
-          zipcode: number;
-        };
-        Insert: {
-          city?: string | null;
-          entrance: string;
-          id?: number;
-          street: string;
-          street_number: number;
-          zipcode: number;
-        };
-        Update: {
-          city?: string | null;
-          entrance?: string;
-          id?: number;
-          street?: string;
-          street_number?: number;
-          zipcode?: number;
-        };
-        Relationships: [];
       };
       category: {
         Row: {
           ai_instructions: string | null;
           created_at: string;
-          default_emission_factor_id: number | null;
           description: string | null;
           form_schema: Json | null;
           id: number;
@@ -770,7 +452,6 @@ export interface Database {
         Insert: {
           ai_instructions?: string | null;
           created_at?: string;
-          default_emission_factor_id?: number | null;
           description?: string | null;
           form_schema?: Json | null;
           id?: number;
@@ -784,7 +465,6 @@ export interface Database {
         Update: {
           ai_instructions?: string | null;
           created_at?: string;
-          default_emission_factor_id?: number | null;
           description?: string | null;
           form_schema?: Json | null;
           id?: number;
@@ -797,46 +477,11 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'category_default_emission_factor_id_fkey';
-            columns: ['default_emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'emission_factor';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'category_default_emission_factor_id_fkey';
-            columns: ['default_emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_id'];
-          },
-          {
-            foreignKeyName: 'category_default_emission_factor_id_fkey';
-            columns: ['default_emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_emission_factors';
-            referencedColumns: ['id'];
-          },
-          {
             foreignKeyName: 'category_parent_category_id_fkey';
             columns: ['parent_category_id'];
             isOneToOne: false;
             referencedRelation: 'category';
             referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'category_parent_category_id_fkey';
-            columns: ['parent_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'category_parent_category_id_fkey';
-            columns: ['parent_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
           },
           {
             foreignKeyName: 'category_parent_category_id_fkey';
@@ -891,819 +536,37 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'text_content_category_id_fkey';
+            foreignKeyName: 'category_submission_category_id_fkey';
             columns: ['category_id'];
             isOneToOne: false;
             referencedRelation: 'category';
             referencedColumns: ['id'];
           },
           {
-            foreignKeyName: 'text_content_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'text_content_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'text_content_category_id_fkey';
+            foreignKeyName: 'category_submission_category_id_fkey';
             columns: ['category_id'];
             isOneToOne: false;
             referencedRelation: 'view_categories_overview';
             referencedColumns: ['child_category_id'];
           },
           {
-            foreignKeyName: 'text_content_category_id_fkey';
+            foreignKeyName: 'category_submission_category_id_fkey';
             columns: ['category_id'];
             isOneToOne: false;
             referencedRelation: 'view_categories_overview';
             referencedColumns: ['parent_category_id'];
           },
           {
-            foreignKeyName: 'text_content_category_id_fkey';
+            foreignKeyName: 'category_submission_category_id_fkey';
             columns: ['category_id'];
             isOneToOne: false;
             referencedRelation: 'view_category_submissions';
             referencedColumns: ['category_id'];
-          },
-        ];
-      };
-      country: {
-        Row: {
-          code: string | null;
-          id: number;
-          name: string | null;
-        };
-        Insert: {
-          code?: string | null;
-          id?: never;
-          name?: string | null;
-        };
-        Update: {
-          code?: string | null;
-          id?: never;
-          name?: string | null;
-        };
-        Relationships: [];
-      };
-      currency_rate: {
-        Row: {
-          currency_code: string;
-          rate_in_eur: number;
-          year: number;
-        };
-        Insert: {
-          currency_code: string;
-          rate_in_eur: number;
-          year: number;
-        };
-        Update: {
-          currency_code?: string;
-          rate_in_eur?: number;
-          year?: number;
-        };
-        Relationships: [];
-      };
-      destination: {
-        Row: {
-          coordinates: unknown | null;
-          country_code: string | null;
-          id: number;
-          name: string | null;
-        };
-        Insert: {
-          coordinates?: unknown | null;
-          country_code?: string | null;
-          id?: never;
-          name?: string | null;
-        };
-        Update: {
-          coordinates?: unknown | null;
-          country_code?: string | null;
-          id?: never;
-          name?: string | null;
-        };
-        Relationships: [];
-      };
-      distribution_contract: {
-        Row: {
-          account_id: string;
-          address_id: number;
-          city: string | null;
-          distribution: string | null;
-          households: number | null;
-          id: number;
-          period: string;
-          total: string | null;
-          transport_last_mile: string | null;
-          transport_regional: string | null;
-        };
-        Insert: {
-          account_id: string;
-          address_id: number;
-          city?: string | null;
-          distribution?: string | null;
-          households?: number | null;
-          id?: number;
-          period?: string;
-          total?: string | null;
-          transport_last_mile?: string | null;
-          transport_regional?: string | null;
-        };
-        Update: {
-          account_id?: string;
-          address_id?: number;
-          city?: string | null;
-          distribution?: string | null;
-          households?: number | null;
-          id?: number;
-          period?: string;
-          total?: string | null;
-          transport_last_mile?: string | null;
-          transport_regional?: string | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'address_id_fkey';
-            columns: ['address_id'];
-            isOneToOne: false;
-            referencedRelation: 'address';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'public_transport_city_fkey';
-            columns: ['city', 'period', 'account_id'];
-            isOneToOne: false;
-            referencedRelation: 'transport_line_haul';
-            referencedColumns: ['city', 'period', 'transporter'];
-          },
-          {
-            foreignKeyName: 'transport_last_mile_fkey';
-            columns: ['transport_last_mile', 'period', 'account_id'];
-            isOneToOne: false;
-            referencedRelation: 'transport_last_mile';
-            referencedColumns: ['vehicle', 'period', 'transporter'];
-          },
-          {
-            foreignKeyName: 'transport_regional_fkey';
-            columns: ['transport_regional', 'period', 'account_id'];
-            isOneToOne: false;
-            referencedRelation: 'transport_regional';
-            referencedColumns: ['regional', 'period', 'transporter'];
-          },
-        ];
-      };
-      emission: {
-        Row: {
-          activity_id: number;
-          emission_factor_id: number;
-          id: number;
-          units_amount: number;
-        };
-        Insert: {
-          activity_id: number;
-          emission_factor_id: number;
-          id?: number;
-          units_amount: number;
-        };
-        Update: {
-          activity_id?: number;
-          emission_factor_id?: number;
-          id?: number;
-          units_amount?: number;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'emission_activity_id_fkey';
-            columns: ['activity_id'];
-            isOneToOne: false;
-            referencedRelation: 'activity';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'emission_activity_id_fkey';
-            columns: ['activity_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'emission_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'emission_factor';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'emission_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_id'];
-          },
-          {
-            foreignKeyName: 'emission_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_emission_factors';
-            referencedColumns: ['id'];
-          },
-        ];
-      };
-      emission_factor: {
-        Row: {
-          account_id: string | null;
-          category_id: number | null;
-          co2_per_unit: number;
-          country_id: number | null;
-          created_at: string;
-          id: number;
-          nace_category_id: number | null;
-          name: string;
-          scope_1_factor: number;
-          scope_2_factor: number;
-          unit: string;
-          year: number;
-        };
-        Insert: {
-          account_id?: string | null;
-          category_id?: number | null;
-          co2_per_unit: number;
-          country_id?: number | null;
-          created_at?: string;
-          id?: number;
-          nace_category_id?: number | null;
-          name: string;
-          scope_1_factor?: number;
-          scope_2_factor?: number;
-          unit: string;
-          year: number;
-        };
-        Update: {
-          account_id?: string | null;
-          category_id?: number | null;
-          co2_per_unit?: number;
-          country_id?: number | null;
-          created_at?: string;
-          id?: number;
-          nace_category_id?: number | null;
-          name?: string;
-          scope_1_factor?: number;
-          scope_2_factor?: number;
-          unit?: string;
-          year?: number;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['child_category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['parent_category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_category_submissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_country_id_fkey';
-            columns: ['country_id'];
-            isOneToOne: false;
-            referencedRelation: 'country';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_country_id_fkey';
-            columns: ['country_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['country_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_nace_category_id_fkey';
-            columns: ['nace_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'nace_category';
-            referencedColumns: ['id'];
-          },
-        ];
-      };
-      emission_type: {
-        Row: {
-          emission_type: string;
-        };
-        Insert: {
-          emission_type: string;
-        };
-        Update: {
-          emission_type?: string;
-        };
-        Relationships: [];
-      };
-      nace_category: {
-        Row: {
-          category_id: number | null;
-          id: number;
-          name: string | null;
-          parent_nace_category_id: number | null;
-        };
-        Insert: {
-          category_id?: number | null;
-          id?: never;
-          name?: string | null;
-          parent_nace_category_id?: number | null;
-        };
-        Update: {
-          category_id?: number | null;
-          id?: never;
-          name?: string | null;
-          parent_nace_category_id?: number | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'nace_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'nace_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'nace_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'nace_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['child_category_id'];
-          },
-          {
-            foreignKeyName: 'nace_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['parent_category_id'];
-          },
-          {
-            foreignKeyName: 'nace_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_category_submissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'nace_category_parent_nace_category_id_fkey';
-            columns: ['parent_nace_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'nace_category';
-            referencedColumns: ['id'];
-          },
-        ];
-      };
-      order: {
-        Row: {
-          account_id: string | null;
-          created_at: string | null;
-          customer: string | null;
-          customer_no: string | null;
-          delivery_date: string;
-          distribution_contract_id: number | null;
-          id: number;
-          metadata: Json | null;
-          product: string | null;
-          tracking_id: string | null;
-          transporter: string | null;
-          updated_at: string | null;
-          volume: number | null;
-          weight: number | null;
-        };
-        Insert: {
-          account_id?: string | null;
-          created_at?: string | null;
-          customer?: string | null;
-          customer_no?: string | null;
-          delivery_date: string;
-          distribution_contract_id?: number | null;
-          id?: number;
-          metadata?: Json | null;
-          product?: string | null;
-          tracking_id?: string | null;
-          transporter?: string | null;
-          updated_at?: string | null;
-          volume?: number | null;
-          weight?: number | null;
-        };
-        Update: {
-          account_id?: string | null;
-          created_at?: string | null;
-          customer?: string | null;
-          customer_no?: string | null;
-          delivery_date?: string;
-          distribution_contract_id?: number | null;
-          id?: number;
-          metadata?: Json | null;
-          product?: string | null;
-          tracking_id?: string | null;
-          transporter?: string | null;
-          updated_at?: string | null;
-          volume?: number | null;
-          weight?: number | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'distribution_contract_fkey';
-            columns: ['distribution_contract_id'];
-            isOneToOne: false;
-            referencedRelation: 'distribution_contract';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'distribution_contract_fkey';
-            columns: ['distribution_contract_id'];
-            isOneToOne: false;
-            referencedRelation: 'orders_with_emissions';
-            referencedColumns: ['distribution_contract_id'];
-          },
-        ];
-      };
-      report: {
-        Row: {
-          account_id: string;
-          created_at: string;
-          id: number;
-          name: string;
-          period: number;
-          slug: string | null;
-          user_id: string;
-        };
-        Insert: {
-          account_id: string;
-          created_at?: string;
-          id?: number;
-          name: string;
-          period: number;
-          slug?: string | null;
-          user_id?: string;
-        };
-        Update: {
-          account_id?: string;
-          created_at?: string;
-          id?: number;
-          name?: string;
-          period?: number;
-          slug?: string | null;
-          user_id?: string;
-        };
-        Relationships: [];
-      };
-      report_status: {
-        Row: {
-          account_id: string | null;
-          created_at: string;
-          id: number;
-          name: string;
-          user_id: string | null;
-        };
-        Insert: {
-          account_id?: string | null;
-          created_at?: string;
-          id?: number;
-          name: string;
-          user_id?: string | null;
-        };
-        Update: {
-          account_id?: string | null;
-          created_at?: string;
-          id?: number;
-          name?: string;
-          user_id?: string | null;
-        };
-        Relationships: [];
-      };
-      transport_last_mile: {
-        Row: {
-          emission: number;
-          emission_type: string | null;
-          energy: number | null;
-          period: string;
-          transporter: string;
-          vehicle: string;
-        };
-        Insert: {
-          emission: number;
-          emission_type?: string | null;
-          energy?: number | null;
-          period?: string;
-          transporter: string;
-          vehicle: string;
-        };
-        Update: {
-          emission?: number;
-          emission_type?: string | null;
-          energy?: number | null;
-          period?: string;
-          transporter?: string;
-          vehicle?: string;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'public_transport_last_mile_emission_type_fkey';
-            columns: ['emission_type'];
-            isOneToOne: false;
-            referencedRelation: 'emission_type';
-            referencedColumns: ['emission_type'];
-          },
-        ];
-      };
-      transport_line_haul: {
-        Row: {
-          city: string;
-          emission: number;
-          emission_type: string;
-          energy: number | null;
-          period: string;
-          transporter: string;
-        };
-        Insert: {
-          city: string;
-          emission?: number;
-          emission_type?: string;
-          energy?: number | null;
-          period?: string;
-          transporter: string;
-        };
-        Update: {
-          city?: string;
-          emission?: number;
-          emission_type?: string;
-          energy?: number | null;
-          period?: string;
-          transporter?: string;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'public_transport_line_haul_emission_type_fkey';
-            columns: ['emission_type'];
-            isOneToOne: false;
-            referencedRelation: 'emission_type';
-            referencedColumns: ['emission_type'];
-          },
-        ];
-      };
-      transport_regional: {
-        Row: {
-          emission: number | null;
-          emission_type: string | null;
-          energy: number | null;
-          period: string;
-          regional: string;
-          transporter: string;
-        };
-        Insert: {
-          emission?: number | null;
-          emission_type?: string | null;
-          energy?: number | null;
-          period?: string;
-          regional: string;
-          transporter: string;
-        };
-        Update: {
-          emission?: number | null;
-          emission_type?: string | null;
-          energy?: number | null;
-          period?: string;
-          regional?: string;
-          transporter?: string;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'public_transport_regional_emission_type_fkey';
-            columns: ['emission_type'];
-            isOneToOne: false;
-            referencedRelation: 'emission_type';
-            referencedColumns: ['emission_type'];
           },
         ];
       };
     };
     Views: {
-      green_zipcodes_mv: {
-        Row: {
-          period: string | null;
-          zipcode: number | null;
-        };
-        Relationships: [];
-      };
-      orders_with_emissions: {
-        Row: {
-          account_id: string | null;
-          city: string | null;
-          customer: string | null;
-          delivery_date: string | null;
-          distribution_contract_id: number | null;
-          last_mile_emission: number | null;
-          last_mile_energy: number | null;
-          line_haul_emission: number | null;
-          line_haul_energy: number | null;
-          name: string | null;
-          order_id: number | null;
-          period: string | null;
-          regional_emission: number | null;
-          regional_energy: number | null;
-          slug: string | null;
-          volume: number | null;
-          weight: number | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'public_transport_city_fkey';
-            columns: ['city', 'period', 'account_id'];
-            isOneToOne: false;
-            referencedRelation: 'transport_line_haul';
-            referencedColumns: ['city', 'period', 'transporter'];
-          },
-        ];
-      };
-      view_accounting_categories: {
-        Row: {
-          account_id: string | null;
-          account_name: string | null;
-          category_id: number | null;
-          category_name: string | null;
-          emission_factor_id: number | null;
-          emission_factor_name: string | null;
-          external_accounting_category_id: string | null;
-          id: number | null;
-          nace_category_id: number | null;
-          nace_category_name: string | null;
-          name: string | null;
-          parent_accounting_category_id: number | null;
-          parent_accounting_category_name: string | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['child_category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['parent_category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_category_submissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'emission_factor';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_emission_factors';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_nace_category_id_fkey';
-            columns: ['nace_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'nace_category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_parent_accounting_category_id_fkey';
-            columns: ['parent_accounting_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'accounting_category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounting_category_parent_accounting_category_id_fkey';
-            columns: ['parent_accounting_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_accounting_categories';
-            referencedColumns: ['id'];
-          },
-        ];
-      };
-      view_activities_with_emissions: {
-        Row: {
-          account_id: string | null;
-          account_slug: string | null;
-          category_id: number | null;
-          category_slug: string | null;
-          co2: number | null;
-          co2_per_unit: number | null;
-          country_id: number | null;
-          country_name: string | null;
-          customer_account_id: string | null;
-          customer_account_name: string | null;
-          duration: number | null;
-          emission_factor_category_id: number | null;
-          emission_factor_category_name: string | null;
-          emission_factor_id: number | null;
-          emission_factor_name: string | null;
-          emission_id: number | null;
-          id: number | null;
-          metadata: Json | null;
-          month: number | null;
-          supplier_account_id: string | null;
-          supplier_account_name: string | null;
-          unit: string | null;
-          units_amount: number | null;
-          year: number | null;
-        };
-        Relationships: [];
-      };
       view_categories_overview: {
         Row: {
           account_id: string | null;
@@ -1737,20 +600,6 @@ export interface Database {
             isOneToOne: false;
             referencedRelation: 'category';
             referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'category_parent_category_id_fkey';
-            columns: ['parent_category_parent_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'category_parent_category_id_fkey';
-            columns: ['parent_category_parent_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
           },
           {
             foreignKeyName: 'category_parent_category_id_fkey';
@@ -1802,20 +651,6 @@ export interface Database {
             foreignKeyName: 'category_parent_category_id_fkey';
             columns: ['parent_category_id'];
             isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'category_parent_category_id_fkey';
-            columns: ['parent_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'category_parent_category_id_fkey';
-            columns: ['parent_category_id'];
-            isOneToOne: false;
             referencedRelation: 'view_categories_overview';
             referencedColumns: ['child_category_id'];
           },
@@ -1832,142 +667,6 @@ export interface Database {
             isOneToOne: false;
             referencedRelation: 'view_category_submissions';
             referencedColumns: ['category_id'];
-          },
-        ];
-      };
-      view_emission_factors: {
-        Row: {
-          account_id: string | null;
-          account_name: string | null;
-          category_id: number | null;
-          category_name: string | null;
-          co2_per_unit: number | null;
-          country_id: number | null;
-          country_name: string | null;
-          created_at: string | null;
-          id: number | null;
-          nace_category_id: number | null;
-          nace_category_name: string | null;
-          name: string | null;
-          scope_1_factor: number | null;
-          scope_2_factor: number | null;
-          unit: string | null;
-          year: number | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'category';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['child_category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_categories_overview';
-            referencedColumns: ['parent_category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_category_id_fkey';
-            columns: ['category_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_category_submissions';
-            referencedColumns: ['category_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_country_id_fkey';
-            columns: ['country_id'];
-            isOneToOne: false;
-            referencedRelation: 'country';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_country_id_fkey';
-            columns: ['country_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['country_id'];
-          },
-          {
-            foreignKeyName: 'emission_factor_nace_category_id_fkey';
-            columns: ['nace_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'nace_category';
-            referencedColumns: ['id'];
-          },
-        ];
-      };
-      view_suppliers: {
-        Row: {
-          account_id: string | null;
-          business_description: string | null;
-          emission_factor_id: number | null;
-          emission_factor_name: string | null;
-          from_date: string | null;
-          id: number | null;
-          include_share: number | null;
-          nace_category_id: number | null;
-          nace_category_name: string | null;
-          name: string | null;
-          organization_number: string | null;
-          other_account_id: string | null;
-          primary_owner_user_id: string | null;
-          private_metadata: Json | null;
-          public_metadata: Json | null;
-          slug: string | null;
-          website_url: string | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: 'accounts_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'emission_factor';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounts_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_activities_with_emissions';
-            referencedColumns: ['emission_factor_id'];
-          },
-          {
-            foreignKeyName: 'accounts_emission_factor_id_fkey';
-            columns: ['emission_factor_id'];
-            isOneToOne: false;
-            referencedRelation: 'view_emission_factors';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'accounts_nace_category_id_fkey';
-            columns: ['nace_category_id'];
-            isOneToOne: false;
-            referencedRelation: 'nace_category';
-            referencedColumns: ['id'];
           },
         ];
       };
@@ -1978,12 +677,6 @@ export interface Database {
           lookup_invitation_token: string;
         };
         Returns: Json;
-      };
-      check_order_access: {
-        Args: {
-          dist_contract_id: number;
-        };
-        Returns: boolean;
       };
       create_account: {
         Args: {
@@ -2052,26 +745,9 @@ export interface Database {
         };
         Returns: Json;
       };
-      get_account_slug: {
-        Args: {
-          account_id: string;
-        };
-        Returns: string;
-      };
       get_accounts: {
         Args: Record<PropertyKey, never>;
         Returns: Json;
-      };
-      get_accounts_with_category: {
-        Args: {
-          category_slug: string;
-        };
-        Returns: {
-          id: string;
-          slug: string;
-          name: string;
-          status: Database['public']['Enums']['project_status'];
-        }[];
       };
       get_all_group_accounts: {
         Args: {
@@ -2091,82 +767,6 @@ export interface Database {
       get_child_accounts: {
         Args: {
           parent_account_slug: string;
-        };
-        Returns: {
-          id: string;
-          parent_account_id: string;
-          name: string;
-          slug: string;
-        }[];
-      };
-      get_emissions_summary: {
-        Args: {
-          start_date: string;
-          end_date: string;
-          account_ids: string[];
-          customer_name?: string;
-        };
-        Returns: {
-          account_id: string;
-          slug: string;
-          name: string;
-          orders: number;
-          last_mile_emission: number;
-          regional_emission: number;
-          line_haul_emission: number;
-          weight: number;
-          volume: number;
-          last_mile_energy: number;
-          regional_energy: number;
-          line_haul_energy: number;
-        }[];
-      };
-      get_emissions_summary_grouped_by_city: {
-        Args: {
-          start_date: string;
-          end_date: string;
-          account_ids: string[];
-          customer_name?: string;
-        };
-        Returns: {
-          city: string;
-          orders: number;
-          last_mile_emission: number;
-          regional_emission: number;
-          line_haul_emission: number;
-          weight: number;
-          volume: number;
-          last_mile_energy: number;
-          regional_energy: number;
-          line_haul_energy: number;
-        }[];
-      };
-      get_emissions_summary_grouped_by_period: {
-        Args: {
-          start_date: string;
-          end_date: string;
-          account_ids: string[];
-          customer_name: string;
-        };
-        Returns: {
-          account_id: string;
-          slug: string;
-          name: string;
-          period: string;
-          orders: number;
-          last_mile_emission: number;
-          regional_emission: number;
-          line_haul_emission: number;
-          weight: number;
-          volume: number;
-          last_mile_energy: number;
-          regional_energy: number;
-          line_haul_energy: number;
-        }[];
-      };
-      get_parent_accounts: {
-        Args: {
-          child_account_slug: string;
         };
         Returns: {
           id: string;
@@ -2236,14 +836,6 @@ export interface Database {
         };
         Returns: undefined;
       };
-      set_parent_account: {
-        Args: {
-          child_account_id: string;
-          parent_account_id: string;
-          relation_type?: Database['public']['Enums']['account_relation_type'];
-        };
-        Returns: undefined;
-      };
       update_account: {
         Args: {
           account_id: string;
@@ -2271,8 +863,8 @@ export interface Database {
         | 'not-started'
         | 'in-progress'
         | 'in-review'
-        | 'completed'
-        | 'in-parent-review';
+        | 'in-parent-review'
+        | 'completed';
     };
     CompositeTypes: {
       [_ in never]: never;
