@@ -2,15 +2,20 @@
 
 ## Tech stack
 
-[React](https://reactjs.org/), [Remix](https://remix.run/), [Supabase](https://supabase.com/), [TypeScript](https://www.typescriptlang.org/), [shadcn/ui](https://ui.shadcn.com/), [Tailwind](https://tailwindcss.com/)
+[React](https://reactjs.org/),
+[Remix](https://remix.run/),
+[Supabase](https://supabase.com/),
+[TypeScript](https://www.typescriptlang.org/),
+[shadcn/ui](https://ui.shadcn.com/),
+[Tailwind](https://tailwindcss.com/)
 
 ## Setting up
 
-1. Clone this repo: `git clone git@github.com:Climate-Action-Agency/test-remix-supabase.git `
+1. Clone this repo: `git clone git@github.com:Climate-Action-Agency/test-remix-supabase.git`
 2. [Start Docker](https://www.docker.com/) (used for Supabase)
 3. Start Supabase: `npx supabase start` (local Supabase web admin: http://localhost:54323/project/default/editor)
-4. Take note of `anon key` when starting Supabase. Use `npx supabase status` if you didn’t get this already.
-5. Copy `.env.example` to `.env` and update `SUPABASE_ANON_KEY` from step 4.
+4. Take note of `anon key` when starting Supabase. Use `npx supabase status` if you didn’t get this already
+5. Copy `.env.example` to `.env` and update `SUPABASE_ANON_KEY` from step 4
 6. Reset the database: `npx supabase db reset`
 7. Install NPM packages: `npm install`
 
@@ -27,14 +32,15 @@ Go to http://localhost:3000/ and log in with:
 
 ## Development workflow
 
-- Always work in separate branches, and use pull requests.
-- Process:
-	1. FYI: we normally use [Linear](https://linear.app/) for issue tracking and creating branch names, but ignore this for now.
-	2. Create new branch for new feature/fix: `[username]/[description-of-feature]` (PR title: “Description of feature”).
-	3. Apply code linting/prettifier – `npm run fix` (or `npm run precommit` if you modified the database) – before committing code and correct any issues.
-	4. Create a new [pull request (PR)](https://github.com/Climate-Action-Agency/test-remix-supabase/pulls) on GitHub.
-	5. Tech Lead will review your pull request.
-- It’s ok to merge `staging` branch into your feature branch to solve conflicts.
+We normally use [Linear](https://linear.app/) for issue tracking and creating branch names, but ignore this for now.
+
+1. Create new branch for the new feature/fix: `[username]/[description-of-feature]` (PR title: “Description of feature”).
+2. Write your amazing code.
+2. Apply code linting/prettifier – `npm run fix` (or `npm run precommit` if you modified the database) – before committing code and correct any issues.
+3. Create a new [pull request (PR)](https://github.com/Climate-Action-Agency/test-remix-supabase/pulls) on GitHub.
+4. Tech Lead will review your pull request.
+
+P.S. It’s ok to merge `main` branch into your own feature branch to solve conflicts.
 
 ### Creating migrations for database changes
 
