@@ -6,7 +6,8 @@
 [Remix](https://remix.run/),
 [Supabase](https://supabase.com/),
 [shadcn/ui](https://ui.shadcn.com/) (= [Tailwind](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/)),
-[TypeScript](https://www.typescriptlang.org/)
+[TypeScript](https://www.typescriptlang.org/),
+[Vite](https://vite.dev/)
 
 ## Setting up
 
@@ -68,7 +69,7 @@ After migration:
 - Create a file for your page/route (e.g. `app/routes/my-page.tsx`) with this structure:
   1.  Load data: `loader` (Remix)
   2.  Render: `export default function MyPageName` (React component). You can use `DataTable` to render the list view.
-  3.  Interactions: `action` (Remix): just returns `genericCrudActions(…)` if just standard CRUD behavior is required.
+  3.  Form interactions: `action` (Remix)
 
 ## Test tasks
 
