@@ -3,7 +3,8 @@
 -- Same as basejump.account_role but to prevent crash in "/usr/local/bin/migra"
 CREATE TYPE public.account_role AS ENUM (
     'owner',
-    'member'
+    'member',
+    'reviewer'
 );
 
 CREATE TYPE public.account_relation_type AS ENUM (

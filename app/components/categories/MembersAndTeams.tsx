@@ -85,6 +85,7 @@ export default function MembersAndTeams() {
                     <SelectContent>
                       <SelectItem value='member'>Contributor</SelectItem>
                       <SelectItem value='owner'>Owner</SelectItem>
+                      <SelectItem value='reviewer'>Reviewer</SelectItem>
                       <SelectItem value='remove'>Remove</SelectItem>
                     </SelectContent>
                   </Select>

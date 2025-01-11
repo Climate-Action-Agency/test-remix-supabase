@@ -192,7 +192,7 @@ export function categoryReferenceAndName(category: FunctionGetViewCategoriesOver
 
 export function getCategoryMembers(
   category: FunctionGetViewCategoriesOverviewReturns,
-  role: 'owner' | 'member' | undefined,
+  role: 'owner' | 'member' | 'reviewer' | undefined,
 ) {
   return (
     category.child_category_users

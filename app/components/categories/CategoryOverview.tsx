@@ -197,6 +197,9 @@ const DisclosureRow: React.FC<{
         <DisclosureUsers category={category} role='member' />
       </TableCell>
       <TableCell className='py-4'>
+        <DisclosureUsers category={category} role='reviewer' />
+      </TableCell>
+      <TableCell className='py-4'>
         {category.child_category_status && (
           <>
             <Badge

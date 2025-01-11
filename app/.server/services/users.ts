@@ -5,7 +5,7 @@ import config from '~/config/config';
 import { sendEmailUserInvitation } from '~/.server/services/email';
 import { getAccountById } from '~/.server/services/accounts';
 
-export type UserRole = 'member' | 'owner';
+export type UserRole = 'member' | 'owner' | 'reviewer';
 export type UserRoleCreate = UserRole | 'primary_owner';
 
 export type Invitation = Database['basejump']['Tables']['invitations']['Row'];

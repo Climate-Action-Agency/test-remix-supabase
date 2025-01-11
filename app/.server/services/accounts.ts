@@ -196,7 +196,7 @@ export async function createAccount({
 
 export interface AccountMember {
   user_id: string;
-  account_role: 'owner' | 'member';
+  account_role: 'owner' | 'member' | 'reviewer';
   name: string;
   email: string;
   is_primary_owner: boolean;
