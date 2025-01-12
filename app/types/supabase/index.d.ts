@@ -282,7 +282,7 @@ export interface Database {
       };
     };
     Enums: {
-      account_role: 'owner' | 'member';
+      account_role: 'owner' | 'member' | 'reviewer';
       invitation_type: 'one_time' | '24_hour';
       subscription_status:
         | 'trialing'
@@ -858,7 +858,7 @@ export interface Database {
     };
     Enums: {
       account_relation_type: 'owner-of' | 'customer-to';
-      account_role: 'owner' | 'member';
+      account_role: 'owner' | 'member' | 'reviewer';
       project_status:
         | 'not-started'
         | 'in-progress'

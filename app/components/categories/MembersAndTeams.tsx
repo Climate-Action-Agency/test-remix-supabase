@@ -83,6 +83,7 @@ export default function MembersAndTeams() {
                       <SelectValue placeholder='Select a role' />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value='reviewer'>Reviewer</SelectItem>
                       <SelectItem value='member'>Contributor</SelectItem>
                       <SelectItem value='owner'>Owner</SelectItem>
                       <SelectItem value='remove'>Remove</SelectItem>

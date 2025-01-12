@@ -105,6 +105,7 @@ export default function MemberSelector({
                             <SelectContent>
                               <SelectItem value='owner'>Owner</SelectItem>
                               <SelectItem value='member'>Contributor</SelectItem>
+                              <SelectItem value='reviewer'>Reviewer</SelectItem>
                             </SelectContent>
                           </Select>
 
