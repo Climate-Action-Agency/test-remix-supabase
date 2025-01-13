@@ -11,13 +11,14 @@
 
 ## Setting up
 
-1. Clone this repo (see the green `<> Code` button on GitHub)
-2. [Start Docker](https://www.docker.com/) (used for Supabase)
-3. Start Supabase: `npx supabase start` (tip: you can run the [Supabase web dashboard](http://localhost:54323/project/default/editor))
-4. Take note of `anon key` when starting Supabase. Use `npx supabase status` if you didn’t get this already
-5. Copy `.env.example` to `.env` and update `SUPABASE_ANON_KEY` from step 4
-6. Reset/seed the database: `npx supabase db reset`
-7. Install NPM packages: `npm install`
+1. Fork this repo (see the gray `Fork` button on GitHub)
+2. Clone your new repo to your computer (see the green `<> Code` button on GitHub)
+3. [Start Docker](https://www.docker.com/) (used for Supabase)
+4. Start Supabase: `npx supabase start` (tip: you can run the [Supabase web dashboard](http://localhost:54323/project/default/editor))
+5. Take note of `anon key` when starting Supabase. Use `npx supabase status` if you didn’t get this already
+6. Copy `.env.example` to `.env` and update `SUPABASE_ANON_KEY` from step 4
+7. Reset/seed the database: `npx supabase db reset`
+8. Install NPM packages: `npm install`
 
 ## Running
 
